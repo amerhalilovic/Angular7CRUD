@@ -14,6 +14,7 @@ export class UserListComponent implements OnInit {
   user: User = new User();
   users: any;
   editUser: any;
+  openedUser:any;
   errorMsg: ErrorMsg = new ErrorMsg();
   id = { 'id': '' };
 
@@ -40,6 +41,8 @@ export class UserListComponent implements OnInit {
 
     this.userService.post(this.user).subscribe(res => {
       this.modalRef.hide();
+      this.user.name = "";
+      this.user.address = "";
       this.getUser();
       console.log(res);
     }, error => {
@@ -62,7 +65,11 @@ export class UserListComponent implements OnInit {
     this.id.id = id;
     this.modalRef = this.modalService.show(template);
   }
+  openModalOrders(template: TemplateRef<any>, user) {
 
+    this.modalRef = this.modalService.show(template);
+    this.openedUser = user 
+  }
   onUpdate() {
     this.userService.update(this.editUser).subscribe(res => {
       this.modalRef.hide();

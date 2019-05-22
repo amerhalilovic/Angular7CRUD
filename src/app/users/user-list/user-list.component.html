@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <button class="btn btn-primary pull-right" (click)="openModalAdd(add)">Add</button>
+      <button class="btn btn-success pull-right" style="margin:0.5rem" (click)="openModalAdd(add)">Add</button>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -15,8 +15,9 @@
             <td>{{user.name}}</td>
             <td>{{user.address}}</td>
             <td>
-              <button class="btn btn-warning" (click)="openModalEdit(edit,user)">Edit</button> |
-              <button class="btn btn-danger" (click)="openModalDelete(delete,user._id)">Delete</button>
+              <button class="btn btn-warning btn-sm" style="margin:5px" (click)="openModalEdit(edit,user)">Edit</button> 
+              <button class="btn btn-danger btn-sm" style="margin:5px" (click)="openModalDelete(delete,user._id)">Delete</button> 
+              <button class="btn btn-primary btn-sm" style="margin:5px" (click)="openModalOrders(orders,user)">Orders</button>
             </td>
           </tr>
         </tbody>
@@ -64,6 +65,20 @@
 
       <button class="btn btn-primary" (click)="onUpdate()">Update</button>
     </form>
+  </div>
+</ng-template>
+
+<ng-template #orders>
+  <div class="modal-header">
+    <h3 class="text-primary pull-right">{{openedUser.name}} </h3>
+
+
+    <button class="close pull-right" type="button" aria-label="Close" (click)="modalRef.hide()"> <span
+        aria-hidden="true"> &times;</span> </button>
+  </div>
+  <div class="modal-body">
+    <pre>Orders</pre>
+    
   </div>
 </ng-template>
 
