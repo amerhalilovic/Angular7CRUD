@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var path = require("path");
 var bodyParser = require("body-parser");
-
+const PORT = 8080 || process.env.PORT;
 mongoose.connect(db, err => {
     if (err) {
         console.error('Error! ' + err)
@@ -77,6 +77,6 @@ app.get("/api/getUser", function (req, res) {
     });
 })
 
-app.listen(8080, function () {
+app.listen(PORT, function () {
     console.log('Example app listening on port 8080')
 })
